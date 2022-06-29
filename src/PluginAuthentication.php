@@ -23,6 +23,7 @@ class PluginAuthentication
     {
         $this->pluginName = $pluginName;
         $this->pluginSlug = $pluginSlug;
+        $this->adminMenuPageParent = $adminMenuPageParent;
     }
 
     /**
