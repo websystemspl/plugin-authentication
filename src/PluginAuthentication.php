@@ -31,7 +31,7 @@ class PluginAuthentication
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         add_action('admin_menu', [$this, 'createAdminMenuPage'], 1);
         $this->updateListener();
@@ -53,7 +53,7 @@ class PluginAuthentication
      *
      * @return void
      */
-    public function createAdminMenuPage()
+    public function createAdminMenuPage(): void
     {
         if(null !== $this->adminMenuPageParent) {
             add_submenu_page( 
@@ -82,7 +82,7 @@ class PluginAuthentication
      *
      * @return void
      */
-    private function updateListener()
+    private function updateListener(): void
     {
         $keyDomain = unserialize(get_option($this->pluginSlug . self::PLUGIN_KEY));
         if(false !== $keyDomain) {
@@ -99,7 +99,7 @@ class PluginAuthentication
      *
      * @return void
      */
-    public function adminMenuPageHandler()
+    public function adminMenuPageHandler(): void
     {
         $errors = '';
         $keyDomain = unserialize(get_option($this->pluginSlug . self::PLUGIN_KEY));
