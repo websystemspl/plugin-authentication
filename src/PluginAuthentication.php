@@ -70,7 +70,7 @@ class PluginAuthentication
             __( 'License - ' . $this->pluginName, 'ws-plugin-authentication' ), 
             __( 'License - ' . $this->pluginName, 'ws-plugin-authentication' ),
             'manage_options',
-            'ws-plugin-authentication-page',
+            $this->pluginSlug . '-ws-plugin-authentication-page',
             [$this, 'adminMenuPageHandler'],
             'dashicons-admin-network',
             10
