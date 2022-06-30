@@ -1,0 +1,99 @@
+#ws-plugin-authentication-license-form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 0px 38px -28px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 38px -28px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 38px -28px rgba(66, 68, 90, 1);  
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.ws-plugin-authentication-license-form__section {
+    margin: 0 0 10px 0;
+}
+
+.ws-plugin-authentication-license-form__header {
+    display: flex;
+    justify-content: left;
+    align-items: center;    
+}
+
+.ws-plugin-authentication-license-form__title {
+    margin: 0px;
+    font-weight: 200;
+}
+
+.ws-plugin-authentication-license-form__logo {
+    max-width: 100%;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.ws-plugin-authentication-license-form__error {
+    padding: 20px 20px;
+    background-color: rgb(216, 74, 73);
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.ws-plugin-authentication-license-form__status {
+    padding: 20px 20px;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ws-plugin-authentication-license-form__status--active {
+    background-color: #58bd9d;
+    color: #ffffff;
+}
+
+#ws-plugin-authentication-license-form .ws-plugin-authentication-license-form__input {
+    width: 100%;
+    max-width: 100%;
+    border: 0px;
+    border-bottom: 2px #cccccc solid;
+    border-radius: 0px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background: #f5f5f5;
+}
+
+#ws-plugin-authentication-license-form .ws-plugin-authentication-license-form__input:focus {
+    background: #ffffff;
+    outline: none;
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;    
+}
+
+.ws-plugin-authentication-license-form__button {
+    border: 0px;
+    padding: 10px 40px;
+    font-weight: 600;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 38px -28px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 38px -28px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 38px -28px rgba(66, 68, 90, 1);      
+}
+
+.ws-plugin-authentication-license-form__button--activate {
+    color: #ffffff;
+    background: rgb(33, 150, 243);
+}
+
+.ws-plugin-authentication-license-form__button--activate:hover {
+    background: rgb(33, 130, 243);    
+}
+
+
+.ws-plugin-authentication-license-form__button--deactivate {
+    color: #ffffff;
+    background: #d84a49;
+}
+

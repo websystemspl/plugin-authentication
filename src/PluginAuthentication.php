@@ -34,6 +34,7 @@ class PluginAuthentication
     public function boot(): void
     {
         add_action('admin_menu', [$this, 'createAdminMenuPage'], 1);
+        add_action('admin_enqueue_scripts', [$this, 'adminAssets'], 99);
         $this->updateListener();
     }
 
@@ -58,23 +59,24 @@ class PluginAuthentication
         if(null !== $this->adminMenuPageParent) {
             add_submenu_page( 
                 $this->adminMenuPageParent,
-                __( 'License - ' . $this->pluginName, 'ws-plugin-authentication' ), 
-                __( 'License - ' . $this->pluginName, 'ws-plugin-authentication' ),
+                apply_filters('wpa-page-title-' . $this->pluginSlug, __( 'License', 'ws-plugin-authentication' ) . ' ' . $this->pluginName), 
+                apply_filters('wpa-menu-title-' . $this->pluginSlug, __( 'License', 'ws-plugin-authentication' ) . ' ' . $this->pluginName),
                 'manage_options',
-                'dashboard',
+                $this->pluginSlug . '-ws-plugin-authentication-page',
                 [$this, 'adminMenuPageHandler'],
                 10
             );             
+        } else {
+            add_menu_page(
+                apply_filters('wpa-menu-title-' . $this->pluginSlug, __( 'License', 'ws-plugin-authentication' ) . ' ' . $this->pluginName),
+                apply_filters('wpa-menu-title-' . $this->pluginSlug, __( 'License', 'ws-plugin-authentication' ) . ' ' . $this->pluginName),
+                'manage_options',
+                $this->pluginSlug . '-ws-plugin-authentication-page',
+                [$this, 'adminMenuPageHandler'],
+                'dashicons-admin-network',
+                10
+            );
         }
-        add_menu_page(
-            __( 'License - ' . $this->pluginName, 'ws-plugin-authentication' ), 
-            __( 'License - ' . $this->pluginName, 'ws-plugin-authentication' ),
-            'manage_options',
-            $this->pluginSlug . '-ws-plugin-authentication-page',
-            [$this, 'adminMenuPageHandler'],
-            'dashicons-admin-network',
-            10
-        );
     }
 
     /**
@@ -126,7 +128,7 @@ class PluginAuthentication
                 } elseif(isset($responseDecoded['error'])) {
                     $errors = $responseDecoded['error'];
                 } else {
-                    $errors = 'Something went wrong.';
+                    $errors = __( 'Something went wrong.', 'ws-plugin-authentication' );
                 }
             }
         }
@@ -152,7 +154,7 @@ class PluginAuthentication
                 } elseif(isset($responseDecoded['error'])) {
                     $errors = $responseDecoded['error'];
                 } else {
-                    $errors = 'Something went wrong.';
+                    $errors = __( 'Something went wrong.', 'ws-plugin-authentication' );
                 }
 
                 header("Refresh:0");
@@ -161,7 +163,14 @@ class PluginAuthentication
 
         load_template(__DIR__ . '/../templates/license.php', true, [
             'errors' => $errors,
-            'keyDomain' => $keyDomain
+            'keyDomain' => $keyDomain,
+            'pluginName' => $this->pluginName,
+            'assetsUrl' => plugins_url() . '/' . $this->pluginSlug . '/vendor/websystemspl/plugin-authentication/assets'
         ]);
     }
+
+    public function adminAssets()
+    {
+        wp_enqueue_style( 'ws-plugin-authentication-admin-styles', plugins_url() . '/' . $this->pluginSlug . '/vendor/websystemspl/plugin-authentication/assets/css/ws-plugin-authentication-styles.css' );
+    }    
 }

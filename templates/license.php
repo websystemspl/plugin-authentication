@@ -1,29 +1,35 @@
-<div style="margin: 20px;">
+<div id="ws-plugin-authentication-license-form">
+    <div class="ws-plugin-authentication-license-form__section">
+        <div class="ws-plugin-authentication-license-form__header">
+            <img src="<?=$args['assetsUrl'] ?>/img/logo.svg" class="ws-plugin-authentication-license-form__logo">
+            <h1 class="ws-plugin-authentication-license-form__title">
+                <?=__('Plugin activate form', 'ws-plugin-authentication') ?>
+            </h1>
+        </div>
+        <p><?=__('for', 'ws-plugin-authentication') ?> <strong><?=$args['pluginName'] ?></strong></p>
+    </div>    
     <?php if($args['errors']): ?>
-        <p style="padding: 5px 10px; color: white; background: red;">ERROR: <?=$args['errors'] ?></p>
+        <div class="ws-plugin-authentication-license-form__section">
+            <p class="ws-plugin-authentication-license-form__error"><?=$args['errors'] ?></p>
+        </div>
     <?php endif; ?>
-</div>
-
-<div style="margin: 20px;">
-    <form action="" method="post">
-        <p>To test: TWWDP8-N6DQ2G-WCWJZT-RX9VJG</p>
-        <input type="text" name="key" placeholder="License Key">
-        <button type="submit" name="activate">Activate</button>
-    </form>
-</div>
-<hr>
-<div style="margin: 20px;">
     <?php if(false === $args['keyDomain']): ?>
-        <span style="padding: 10px 20px; color: white; background: red;">Plugin not activated</span>
-    <?php else: ?>
-        <span style="padding: 10px 20px; color: white; background: green;">Plugin activated!</span>
-    <?php endif; ?>
-</div>
-<hr>
-<?php if(false !== $args['keyDomain']): ?>
-    <div style="margin: 20px;">
-        <form action="" method="post">
-            <button type="submit" name="deactivate">Deactivate</button>
+    <div class="ws-plugin-authentication-license-form__section">
+        <form action="" method="post" style="max-width: 100%;">
+            <input type="text" name="key" placeholder="License Key" class="ws-plugin-authentication-license-form__input">
+            <button type="submit" name="activate" class="ws-plugin-authentication-license-form__button ws-plugin-authentication-license-form__button--activate"><?=__('Activate', 'ws-plugin-authentication') ?></button>
         </form>
     </div>
-<?php endif; ?>
+    <?php else: ?>
+        <div class="ws-plugin-authentication-license-form__section">
+            <div class="ws-plugin-authentication-license-form__status ws-plugin-authentication-license-form__status--active">
+                <div><?=__('Plugin is activated', 'ws-plugin-authentication') ?></div>
+                <div>
+                    <form action="" method="post">
+                        <button type="submit" name="deactivate" class="ws-plugin-authentication-license-form__button ws-plugin-authentication-license-form__button--deactivate"><?=__('Deactivate', 'ws-plugin-authentication') ?></button>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
