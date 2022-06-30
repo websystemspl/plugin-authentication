@@ -169,7 +169,12 @@ class PluginAuthentication
         ]);
     }
 
-    public function adminAssets()
+    /**
+     * Add assets to admin
+     *
+     * @return void
+     */
+    public function adminAssets(): void
     {
         wp_enqueue_style( 'ws-plugin-authentication-admin-styles', plugins_url() . '/' . $this->pluginSlug . '/vendor/websystemspl/plugin-authentication/assets/css/ws-plugin-authentication-styles.css' );
     }    
