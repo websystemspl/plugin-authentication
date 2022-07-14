@@ -33,7 +33,7 @@ class PluginAuthentication
      */
     public function boot(): void
     {
-        add_action('admin_menu', [$this, 'createAdminMenuPage'], 1);
+        add_action('admin_menu', [$this, 'createAdminMenuPage'], 999);
         add_action('admin_enqueue_scripts', [$this, 'adminAssets'], 99);
         $this->updateListener();
     }
