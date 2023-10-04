@@ -124,7 +124,7 @@ class PluginAuthentication
                         'key' => $_POST['key'],
                         'domain' => $_SERVER['HTTP_HOST']
                     ]));
-                    header("Refresh:0");
+                    header("Refresh:1");
                 } elseif(isset($responseDecoded['error'])) {
                     $errors = $responseDecoded['error'];
                 } else {
@@ -150,14 +150,14 @@ class PluginAuthentication
 
                 if(isset($responseDecoded['plugin']) && $responseDecoded['plugin'] == 'deactivated') {
                     delete_option($this->pluginSlug . self::PLUGIN_KEY);
-                    header("Refresh:0");
+                    header("Refresh:1");
                 } elseif(isset($responseDecoded['error'])) {
                     $errors = $responseDecoded['error'];
                 } else {
                     $errors = __( 'Something went wrong.', 'ws-plugin-authentication' );
                 }
 
-                header("Refresh:0");
+                header("Refresh:1");
             }
         }
 
