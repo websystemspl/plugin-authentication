@@ -2,6 +2,8 @@
 
 namespace websystemspl;
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 class PluginAuthentication
 {
     private const PLUGIN_KEY = '-license-plugin_key';
@@ -88,7 +90,7 @@ class PluginAuthentication
     {
         $keyDomain = unserialize(get_option($this->pluginSlug . self::PLUGIN_KEY));
         if(false !== $keyDomain) {
-            \Puc_v4_Factory::buildUpdateChecker(
+            PucFactory::buildUpdateChecker(
                 self::API_DOMAIN . self::CHECKER_POINT . $this->pluginSlug . '/' . $keyDomain['key'] . '/' . $keyDomain['domain'],
                 __FILE__,
                 $this->pluginSlug,

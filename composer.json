@@ -6,8 +6,8 @@
 	"homepage": "https://web-systems.pl",
 	"license": "MIT",
     "require": {
-        "php": ">=5.3.0",
-        "yahnis-elsts/plugin-update-checker": "^4.11"
+        "php": ">=7.4.0",
+        "yahnis-elsts/plugin-update-checker": "^5.4"
     },  
     "autoload": {
         "psr-4": { 
