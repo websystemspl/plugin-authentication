@@ -21,11 +21,19 @@ class PluginAuthentication
     /** @var String */
     private $pluginSlug;
 
-    public function __construct(string $pluginName, string $pluginSlug, ?string $adminMenuPageParent = null)
+    /** @var String */
+    private $backTrace;
+
+    /** @var Integer */
+    private $backTraceIndex;
+
+    public function __construct(string $pluginName, string $pluginSlug, ?string $adminMenuPageParent = null, int $backTraceIndex = 0)
     {
         $this->pluginName = $pluginName;
         $this->pluginSlug = $pluginSlug;
         $this->adminMenuPageParent = $adminMenuPageParent;
+        $this->backTrace = debug_backtrace();
+        $this->backTraceIndex = $backTraceIndex;
     }
 
     /**
@@ -92,7 +100,7 @@ class PluginAuthentication
         if(false !== $keyDomain) {
             PucFactory::buildUpdateChecker(
                 self::API_DOMAIN . self::CHECKER_POINT . $this->pluginSlug . '/' . $keyDomain['key'] . '/' . $keyDomain['domain'],
-                __FILE__,
+                $this->backTrace[$this->backTraceIndex]['file'],
                 $this->pluginSlug,
             );
         }
